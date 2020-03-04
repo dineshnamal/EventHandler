@@ -1,4 +1,4 @@
-package com.events.service;
+package com.events.service.dao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.events.domain.Event;
 
 @Component
-public class EventService {
+public class EventDao {
 
 	private static List<Event> events = new ArrayList<Event>();
 
@@ -20,9 +20,25 @@ public class EventService {
 
 	}
 
-	public List<Event> getEvents() {
-		// TODO Auto-generated method stub
+	public List<Event> findAllEvents() {
 		return events;
 	}
+
+	public Event findEventById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Event findEventByName(String eventName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Event> findEventsByDate(String fromDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }
