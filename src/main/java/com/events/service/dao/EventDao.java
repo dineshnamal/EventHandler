@@ -1,6 +1,7 @@
 package com.events.service.dao;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,20 +26,40 @@ public class EventDao {
 	}
 
 	public Event findEventById(Integer id) {
-		// TODO Auto-generated method stub
+		for (Event event : events) {
+			if (event.getId() == id) {
+				return event;
+			}
+		}
 		return null;
 	}
 
 	public Event findEventByName(String eventName) {
-		// TODO Auto-generated method stub
+		for (Event event : events) {
+			if (eventName.equals(event.getName())) {
+				return event;
+			}
+		}
 		return null;
 	}
 
 	public List<Event> findEventsByDate(String fromDate) {
-		// TODO Auto-generated method stub
-		return null;
+		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.parse(fromDate, sdf);
+		List<Event> filteredEvets = new ArrayList<Event>();
+		for (Event event : events) {
+
+			if (event.getEventDate().isAfter(localDate)) {
+				filteredEvets.add(event);
+			}
+		}
+
+		return filteredEvets;
 	}
-	
-	
+
+	public Event saveEvent(Event event) {
+		events.add(event);
+		return event;
+	}
 
 }
