@@ -2,9 +2,14 @@ package com.events.domain;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Size;
+
 public class Event {
 	private Integer id;
+	@Size(min = 10)
 	private String name;
+	@FutureOrPresent
 	private LocalDate eventDate;
 
 	public Event(Integer id, String name, LocalDate eventDate) {
